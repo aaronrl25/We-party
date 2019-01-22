@@ -1,0 +1,40 @@
+page-menu {
+    .scroll-content{
+        background-color :#2e2f40;
+
+    }
+    
+    ion-item {
+        background: #2e2f40!important;
+        color: #fff !important;
+        font-size:1px;
+
+      }
+      .profile {
+        position: relative;
+        overflow: hidden;
+        height: 24vh;
+        margin-bottom: -0.625em;
+    .letra{
+      color:grey;
+    }
+        img {
+          width: 28vw;
+          height: 28vw;
+          border-radius: 100%;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          object-fit: cover;
+        }
+    
+        img.activated {
+          opacity: 0.5;
+        }
+      }
+    
+  
+}

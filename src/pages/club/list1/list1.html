@@ -1,0 +1,33 @@
+
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle >
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="showMap()">
+                <ion-icon name="map"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content >
+  <!--*********** List  ***********-->
+  <ion-scroll scrollX="true" style="width:400px; height:400px" >
+
+            <ion-slides>
+
+        <ion-slide tappable  *ngFor="let item of items" (click)="goToDetail(item.$key)">
+                                <img [src]="item.imgBig" height="100%">
+
+        </ion-slide>
+
+    </ion-slides>
+
+</ion-scroll>
+
+</ion-content>

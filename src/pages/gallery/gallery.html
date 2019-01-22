@@ -1,0 +1,87 @@
+
+<ion-header>
+  <ion-navbar color="white">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Fotos</ion-title>
+  </ion-navbar>
+
+    
+</ion-header>
+
+<ion-content >
+
+
+<!--***********  2 columns  ***********-->
+<ion-header>
+
+  <ion-navbar>
+    
+      <!-- No groups to show -->
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <div *ngIf="user">
+
+      <div class="profile">
+          <img src="{{user.img}}" tappable (click)="profile()" />
+
+          
+        <h1 style="text-align: right; color: antiquewhite" tappable (click)="setName()">{{user.name}} </h1>      
+              <h1 style=text-align:right;color:antiquewhite   (click)="setDescription()" class="description">{{user.description}}</h1>
+
+
+              <ion-icon name="logo-facebook" *ngIf="user.provider == 'Facebook'" class="facebook"></ion-icon>
+
+
+      </div>
+    </div>
+  <br>
+
+  <H1> FIESTAS</H1>
+  <div class="empty-list" *ngIf="groups && groups.length <= 0">
+      <p>Uh-oh! You are not party of any party yet.</p>
+    </div>
+    <!-- Show groups -->
+  
+    <div *ngIf="groups && groups.length > 0">
+      <div *ngFor="let group of groups | groupFilter: searchGroup">
+        <ion-slides (click)="viewGroup(group.$key)" tappable>
+          
+          <div [ngClass]=hasUnreadMessages(group)>
+            <img src="{{group.img}}" />
+            <ion-badge color="danger" *ngIf="group.unreadMessagesCount > 0">{{group.unreadMessagesCount}}</ion-badge>
+           
+            <p>{{group.name}}</p>
+            <span>{{group.date | DateFormat}}</span>
+
+          </div>
+
+        </ion-slides>
+       
+
+      </div>
+    </div>
+    <H1> Amigos</H1>
+    <div class="empty-list" *ngIf="friends && friends.length == 0">
+        <p>Uh-oh! You have not added any friends right now.</p>
+        <button ion-button icon-left tappable (click)="searchPeople()"><ion-icon name="md-search"></ion-icon>Search People</button>
+      </div>
+      <!-- Show list of friends -->
+      <ion-list class="avatar-list" *ngIf="friends && friends.length > 0">
+        <ion-item *ngFor="let friend of friends | friendFilter:searchFriend" no-lines tappable (click)="viewUser(friend.$key)">
+          <ion-fab middle right>
+            <button ion-fab mini tappable (click)="message(friend.$key); $event.stopPropagation();"><ion-icon name="md-text" class="success"></ion-icon></button>
+          </ion-fab>
+          <ion-avatar item-left>
+            <img src="{{friend.img}}">
+          </ion-avatar>
+          <h2>{{friend.name}}</h2>
+          <p>@{{friend.username}}</p>
+        </ion-item>
+      </ion-list>
+</ion-content>

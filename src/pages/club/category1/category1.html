@@ -1,0 +1,55 @@
+
+<ion-header>
+  <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+NightClubs
+  </ion-navbar>
+
+  <!--*********** Toolbar with segment ***********-->
+  <ion-toolbar >
+       <ion-segment  [(ngModel)]="viewType" color="light">
+      <ion-segment-button value="list">
+      </ion-segment-button>
+      <ion-segment-button value="grid">
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--*********** List view ***********-->
+  <div *ngIf="viewType==='list'">
+    <ion-card tappable  class="card-list fadein-down" *ngFor="let category of category" (click)="openList(category.$key)">
+        <div class="card-list-bg" [ngStyle]="{'background-image': 'url(' + category.imgBg+ ')'}">
+          <h2 class="card-list-title"> {{category.name}}</h2>              
+        </div>
+    </ion-card>
+  </div>
+
+  <!--*********** Grid View  ***********-->
+  <div *ngIf="viewType==='grid'">
+      <ion-grid >
+          <ion-row wrap>
+            <ion-col tappable  col-6 *ngFor="let category2 of category" (click)="openList(category2.$key)" color="gray">
+              <ion-card class="card-grid drop-in" >
+                <div class="card-grid-bg" [ngStyle]="{'background-image': 'url(' + category2.imgBg+ ')'}">
+                    <h2 class="card-grid-title"> {{category2.name}}</h2>                                
+                </div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div>
+
+<!--*********** Fab  ***********-->
+ <ion-fab right bottom>
+    <button ion-fab class="pop-in" color="lightblue"><ion-icon name="chatbubbles"></ion-icon></button>
+    <ion-fab-list side="left">
+      <a href="tel:+15555551212" ion-fab><ion-icon name="call"></ion-icon></a>
+      <!--  <button ion-fab><ion-icon name="chatboxes"></ion-icon></button>-->
+      <!--  <button ion-fab><ion-icon name="images"></ion-icon></button>-->
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

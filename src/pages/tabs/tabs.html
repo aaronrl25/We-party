@@ -1,0 +1,12 @@
+<ion-tabs selectedIndex="0">
+    <ion-tab [root]="groups" tabIcon="md-home"></ion-tab>
+
+
+
+  <ion-tab [root]="messages" tabIcon="md-notifications" tabBadgeStyle="danger" tabBadge="{{getUnreadMessagesCount()}}"></ion-tab>
+  <ion-tab [root]="pro" tabIcon="md-camera" tabBadgeStyle="danger" ></ion-tab>
+  <ion-tab [root]="map" tabIcon="md-people" tabBadgeStyle="danger" tabBadge="{{friendRequestCount}}"></ion-tab>
+  <ion-tab [root]="friends" tabIcon="md-person-add" tabBadgeStyle="danger" tabBadge="{{friendRequestCount}}"></ion-tab>
+  <ion-tab [root]="menu" tabIcon="md-menu"></ion-tab>
+
+</ion-tabs>

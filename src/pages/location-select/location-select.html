@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)='toggleSearch()'>
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)='choosePosition()'>
+        <ion-icon name="ios-locate-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<div class="switch">
+    <!-- <button ion-button icon-only (click)='servicios()'>
+      Servicios
+      </button> -->
+      <button ion-button icon-only (click)='group()'>
+        Crear fiesta
+      </button>
+</div>
+
+<div class="currentitem" *ngIf="currentregional">
+  <button ion-item no-lines (click)="viewPlace(currentregional.title)">
+    <h2>{{ currentregional.title }}</h2>
+    <ion-note item-right icon-only><ion-icon name="ios-arrow-forward"></ion-icon></ion-note>
+  </button>
+</div>
+
+<ion-content>
+    
+
+  <div class="map" [class.hidemap]="!((switch == 'map') || error)">
+    <ion-searchbar #searchbar placeholder="buscar" [hidden]="!search"></ion-searchbar>
+    <div id="map" #map></div>
+  </div>
+</ion-content>

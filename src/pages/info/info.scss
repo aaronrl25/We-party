@@ -1,0 +1,199 @@
+page-info {
+       
+
+  ion-col {
+    float: left !important;
+  }
+
+  ion-title  {
+    color: rgb(12, 0, 0) !important;
+    font-size: 50em;
+
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  div.group {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    border-radius: 1em;
+
+    img {
+      margin-top: 1.25em;
+      width: 10em;
+      height: 10em;
+      object-fit: cover;
+    }
+
+    img.activated,
+    img:active {
+      opacity: 0.5;
+    }
+
+    ion-badge {
+      position: absolute;
+      top: 1em;
+      right: 3.5em;
+    }
+
+    p,
+    span {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 0;
+      font-size: 20px;
+      margin: 0;
+      padding-left: 0.75em;
+      padding-right: 0.75em;
+    }
+
+    p {
+      margin-top: 0.5em;
+      margin-bottom: 0.2em;
+      color: $primary;
+      display: block;
+    }
+
+    span {
+      color: $gray;
+      display: block;
+      padding-bottom: 1.25em;
+    }
+  }
+
+  div.group.activated,
+  div.group:active {
+    opacity: 0.5;
+  }
+
+
+
+
+
+
+
+
+
+
+  .scroll-content{
+    background-color :#2e2f40;
+
+}
+    ion-col {
+        float: left !important;
+      }
+    
+      ion-title  {
+        color: rgb(255, 255, 255) !important;
+        font-size: 50em;
+    
+      }
+    
+      .bold {
+        font-weight: bold;
+      }
+    h1{
+      color: #fff;
+    }
+      div.group {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.3);
+        position: relative;
+        border-radius: 1em;
+    
+        img {
+          width: 28vw;
+          height: 28vw;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          object-fit: cover;
+        }
+    
+        img.activated,
+        img:active {
+          opacity: 0.5;
+        }
+    
+        ion-badge {
+          position: absolute;
+          top: 1em;
+          right: 3.5em;
+        }
+    
+        p,
+        span {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          padding: 0;
+          margin: 0;
+          padding-left: 0.75em;
+          padding-right: 0.75em;
+        }
+    
+        p {
+          margin-top: 0.5em;
+          margin-bottom: 0.2em;
+          color: $primary;
+          font-size: 100%;
+          display: block;
+        }
+    
+        span {
+          color: $gray;
+          font-size: 90%;
+          display: block;
+          padding-bottom: 1.25em;
+        }
+      }
+    
+      div.group.activated,
+      div.group:active {
+        opacity: 0.5;
+      }
+      
+      .avatar-list{
+        height: 29vh;
+        border-radius: 100%;
+
+      }
+      .profile {
+        position: relative;
+        overflow: hidden;
+        height: 24vh;
+        margin-bottom: -0.625em;
+    .letra{
+      color:grey;
+    }
+    img {
+      width: 28vw;
+      height: 28vw;
+      border-radius: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      object-fit: cover;
+    }
+    
+        img.activated {
+          opacity: 0.5;
+        }
+      }
+    
+  
+
+
+
+      
+}
+
+

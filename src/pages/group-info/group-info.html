@@ -1,0 +1,68 @@
+
+  
+  <!-- View Group Info -->
+
+<ion-content>
+    <ion-item no-lines tappable (click)="back()">
+                  <ion-icon name="ios-arrow-back" item-left></ion-icon>
+                </ion-item>       
+  <!-- Group Info -->
+  <div *ngIf="group">
+    <div class="profile">
+      <img src="{{group.img}}" style="width: 100%; height: 100%;"  />
+    </div>
+
+    <h4>
+<br>
+<br>
+<br>
+
+      <h1 tappable (click)="setName()">{{group.name}}</h1>
+      <div class="divider"></div>
+
+    </h4>
+  <p>Descripcion</p>  
+    <span class="description" tappable (click)="setDescription()">{{group.description}}</span>
+    
+   
+    <div class="divider"></div>
+
+    <!-- Members -->
+    <p>invitados</p>  
+
+    <div *ngIf="groupMembers" class="members">
+      <img *ngFor="let member of groupMembers" src="{{member.img}}"  tappable (click)="viewUser(member.$key)" />
+    </div>
+    <!-- Group Menu -->
+    <div class="divider"></div>
+    <p>Fecha</p>
+    <span class="fecha" tappable (click)="setDescription()">{{group.date}}</span>
+    <div class="divider"></div>
+    <p>Hora</p>
+    <span class="hora">{{group.hrs}}</span>
+
+    <div class="divider"></div>
+    <p>Ubicacion</p>  
+    <span class="ubicacion" tappable (click)="setDescription()">{{group.ubicacion}}</span>
+    <div class="divider"></div>
+
+    <ion-list>
+      
+     
+        <ion-item no-lines tappable (click)="addMembers()">
+invitar
+          <ion-icon name="ios-contacts" item-right></ion-icon>
+          </ion-item>
+      
+      <ion-item no-lines tappable (click)="leaveGroup()" *ngIf="groupMembers && groupMembers.length > 1">
+        Abondonar fiesta
+        <ion-icon name="md-log-out" item-right></ion-icon>
+      </ion-item>
+      <!-- When there's only one member left, allow deleting of group. -->
+      <ion-item no-lines tappable (click)="deleteGroup()" *ngIf="groupMembers && groupMembers.length <= 1">
+        Eliminar fiesta
+        <ion-icon name="md-trash" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

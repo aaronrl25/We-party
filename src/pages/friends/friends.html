@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+
+        <button ion-button icon-only tappable (click)="searchPeople()"><ion-icon name="ios-person-add"style=""></ion-icon></button>
+
+    </ion-buttons>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+    <h1>Amigos</h1>
+
+  <!-- No friends to show -->
+  <div class="empty-list" *ngIf="friends && friends.length == 0">
+    <p>Uh-oh! You have not added any friends right now.</p>
+    <button ion-button icon-left tappable (click)="searchPeople()"><ion-icon name="md-search"></ion-icon>Search People</button>
+  </div>
+  <!-- Show list of friends -->
+  <ion-list class="avatar-list" *ngIf="friends && friends.length > 0">
+    <ion-searchbar [(ngModel)]="searchFriend" placeholder="Search for friend or username" showCancelButton="true" cancelButtonText="Done"></ion-searchbar>
+    <ion-item *ngFor="let friend of friends | friendFilter:searchFriend" no-lines tappable (click)="viewUser(friend.$key)">
+      <ion-fab middle right>
+        <button ion-fab mini tappable (click)="message(friend.$key); $event.stopPropagation();"><ion-icon name="md-text" class="success"></ion-icon></button>
+      </ion-fab>
+      <ion-avatar item-left>
+        <img src="{{friend.img}}">
+        <h2>{{friend.name}}</h2>
+
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+</ion-content>

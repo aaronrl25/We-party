@@ -1,0 +1,34 @@
+<!--
+  Generated template for the ClubsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+  </ion-navbar>
+  <ion-title> Mis eventos</ion-title>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="empty-list" *ngIf="groups && groups.length <= 0">
+        <p>Uh-oh! You are not party of any party yet.</p>
+      </div>
+      <!-- Show groups -->
+    
+      <div *ngIf="groups && groups.length > 0">
+        <div *ngFor="let group of groups | groupFilter: searchGroup">
+          <ion-col  tappable>
+            
+            <div [ngClass]=hasUnreadMessages(group)>
+             
+              <p>{{group.name}}</p>
+
+            </div>
+          </ion-col>
+        </div>
+      </div>
+</ion-content>

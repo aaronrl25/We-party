@@ -1,0 +1,50 @@
+
+<ion-header>
+      <ion-navbar color="white">
+        <button ion-button menuToggle >
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+          Night Clubs
+        </ion-title>
+        <ion-buttons end>
+           
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content no-padding >
+        <ion-slides>
+
+               
+        
+    <ion-slide *ngFor="let mapList of mapList | async"   >
+
+         <div class="img-map-wrapper">   
+                <img src="{{mapList.image}}"(click)="showDetail(mapId)" style="width: 50%;">
+
+         </div>
+
+          <ion-list no-lines>
+            <ion-item>
+
+              
+              <h2>{{mapList.name}}</h2>
+              <p>{{mapList.openDate}}</p>
+
+              <ion-badge item-right>Puntaje:{{mapList.rating}}</ion-badge>
+
+
+
+
+            </ion-item>
+
+
+            
+          </ion-list>
+        </ion-slide>
+
+        </ion-slides>
+
+      <div style="height:50px;"></div>
+</ion-content>

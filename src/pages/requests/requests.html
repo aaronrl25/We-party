@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+
+  </ion-navbar>
+     
+    <ion-title>Notificaciones</ion-title>
+</ion-header> 
+<ion-content>
+  <!-- No friend requests sent or received. -->
+
+  <div *ngIf="groups && groups.length > 0">
+      <div *ngFor="let group of groups | groupFilter: searchGroup">
+        <ion-col col-6 (click)="viewGroup(group.$key)" tappable>
+          
+          <div [ngClass]=hasUnreadMessages(group)>
+            <ion-badge color="danger" *ngIf="group.unreadMessagesCount > 0">{{group.unreadMessagesCount}}</ion-badge>
+            <img src="{{group.img}}" />
+  
+            <p>{{group.name}}</p>
+          </div>
+        </ion-col>
+      </div>
+    </div>
+  <div class="empty-list" *ngIf="(friendRequests && friendRequests.length == 0) && (requestsSent && requestsSent.length == 0)">
+  </div>
+  <!-- Show friend requests received. -->
+  <ion-list class="avatar-list" *ngIf="friendRequests && friendRequests.length > 0">
+    <ion-item *ngFor="let friendRequest of friendRequests" no-lines tappable (click)="viewUser(friendRequest.$key)">
+      <ion-fab middle right>
+        <button ion-fab mini tappable (click)="acceptFriendRequest(friendRequest); $event.stopPropagation();">
+          <ion-icon name="md-checkmark-circle" class="success"></ion-icon>
+        </button>
+      </ion-fab>
+      <ion-avatar item-left>
+        <img src="{{friendRequest.img}}">
+      </ion-avatar>
+      <h2>{{friendRequest.name}}</h2>
+      <p>has sent you a friend request.</p>
+    </ion-item>
+  </ion-list>
+  <!-- Show friend requests sent. -->
+  <ion-list class="avatar-list" *ngIf="requestsSent && requestsSent.length > 0">
+    <ion-item *ngFor="let requestSent of requestsSent" no-lines tappable (click)="viewUser(requestSent.$key)">
+      <ion-fab middle right>
+        <button ion-fab mini tappable (click)="cancelFriendRequest(requestSent); $event.stopPropagation();">
+          <ion-icon name="md-close-circle" class="danger"></ion-icon>
+        </button>
+      </ion-fab>
+      <ion-avatar item-left>
+        <img src="{{requestSent.img}}">
+      </ion-avatar>
+      <h2>{{requestSent.name}}</h2>
+      <p>friend request sent.</p>
+      
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+      
+    <ion-buttons end>
+           
+      <div (click)="viewGroup2()">
+        <img src="assets/images/vaso.png" style="width:3.5vh;height:3.5vh ;" />
+      </div>
+            <!-- <button ion-button icon-only tappable (click)="newGroup()"><ion-icon name="md-add"></ion-icon></button> -->
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  
+  <div class="empty-list" *ngIf="groups && groups.length <= 0">
+
+  </div>
+<!-- No groups to show -->
+<div class="map" [class.hidemap]="!((switch == 'map') || error)">
+    <ion-searchbar #searchbar placeholder="buscar" [hidden]="!search"></ion-searchbar>
+
+    <div id="map" #map></div>
+   
+  </div>
+  <div class="switch" >
+
+    <ion-slides *ngIf="groups && groups.length > 0">
+      <div *ngFor="let group of groups | groupFilter: searchGroup">
+
+        <ion-col (click)="viewGroup(group.$key)" tappable>
+
+          <div [ngClass]=hasUnreadMessages(group)>
+              <!-- <ion-badge color="danger" *ngIf="group.unreadMessagesCount > 0">{{group.unreadMessagesCount}}</ion-badge> -->
+
+            <img src="{{group.img}}" />
+           
+            <span>{{group.name}}</span>
+
+                        <span class="fecha" tappable (click)="setDescription()">{{group.date}}</span>
+
+          </div>
+
+        </ion-col>
+
+    </div>
+
+    </ion-slides>          
+  </div>
+
+</ion-content>

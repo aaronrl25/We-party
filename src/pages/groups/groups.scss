@@ -1,0 +1,94 @@
+page-groups {
+ion-col {
+    float: left !important;
+    z-index: 100;
+  position: absolute;
+  }
+  ion-slides {
+    z-index: 100;
+  position: relative;
+  width: 80%;
+
+  }
+  
+ 
+  ion-title  {
+    color: rgb(12, 0, 0) !important;
+    font-size: 50em;
+
+  }
+  #map {
+    height: 100%;
+    width: 100%;
+   
+    position: absolute!important;
+    overflow: hidden!important;
+}
+
+    
+  .bold {
+    font-weight: bold;
+  }
+
+  div.group {
+    margin: 70% 20% 20%;
+
+    text-align: center;
+    background: #000;
+    width: 30%;
+    height: 30%;
+    .active {
+      background: #3366CC!important;
+      color: #fff;
+  }
+
+    img {
+      margin-top:0px;
+      width:10em;
+      height:8em;
+      object-fit: cover;
+
+    }
+
+    img.activated,
+    img:active {
+      opacity: 0.5;
+    }
+
+    ion-badge {
+      position: absolute;
+      top: 0em;
+    }
+
+    p,
+    span {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+      padding-left: 0.75em;
+      padding-right: 0.75em;
+    }
+
+    p {
+      margin-top: 0.5em;
+      margin-bottom: 0.2em;
+      color: $primary;
+      font-size: 100%;
+      display: block;
+    }
+
+    span {
+      color: $gray;
+      font-size: 90%;
+      display: block;
+      padding-bottom: 1.25em;
+    }
+  }
+
+  div.group.activated,
+  div.group:active {
+    opacity: 0.5;
+  }
+}

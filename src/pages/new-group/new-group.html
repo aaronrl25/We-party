@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons>
+      <button ion-button tappable (click)="back()">Back</button>
+    </ion-buttons>
+    <h1>Nueva fiesta</h1>
+    <!-- New Group can only be added when a group form is filled up, image is uploaded, and there's more than one member. -->
+    <ion-buttons end>
+      <button ion-button tappable (click)="done()" [disabled]="!groupForm.valid || group.img == '' || groupMembers.length <= 1">Done</button>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="group">
+    <!-- Set Group Image -->
+    <img src="{{group.img}}" *ngIf="group.img != ''" tappable (click)="setGroupPhoto()" />
+    <img src="assets/images/2.png" *ngIf="group.img == ''" tappable (click)="setGroupPhoto()" />
+    <!-- Group Form -->
+    <div class="form">
+      <form [formGroup]="groupForm">
+        <ion-list>
+
+          <ion-item no-lines>
+            <ion-label>Fiesta*</ion-label>
+            <ion-input type="text" formControlName="name" placeholder="nombre del a fiesta"></ion-input>
+          </ion-item>
+          <br><br>
+          <ion-item no-lines>
+            <ion-label>Descripcion *</ion-label>
+            <ion-textarea rows="4" formControlName="description" placeholder="Descripcion"></ion-textarea>
+          </ion-item>
+          <ion-item no-lines>
+           
+            <ion-label>fecha</ion-label>
+            <ion-datetime displayFormat="MMM DD, YYYY "  formControlName="date" ></ion-datetime> 
+
+          </ion-item>
+          <ion-item no-lines>
+           
+              <ion-label>Hora</ion-label>
+              <ion-datetime displayFormat="HH:mm"  formControlName="hrs" ></ion-datetime> 
+
+            </ion-item>
+
+          <ion-item no-lines>
+              <ion-label>ubicacion</ion-label>
+              <ion-textarea rows="4" formControlName="ubicacion" placeholder="ubicacion"></ion-textarea>
+
+            </ion-item>
+          
+          <!-- Members -->
+          <ion-item no-lines *ngIf="groupMembers">
+            <ion-label class="center">invitados({{groupMembers.length}})</ion-label>
+          </ion-item>
+          <div *ngIf="groupMembers" class="members">
+            <img *ngFor="let member of groupMembers" src="{{member.img}}" tappable (click)="removeFromGroup(member)"/>
+          </div>
+        </ion-list>
+      </form>
+      <!-- No friends to create a group. -->
+      <div class="empty" *ngIf="friends && friends.length == 0">
+        <button ion-button icon-left tappable (click)="searchPeople()"><ion-icon name="md-search"></ion-icon>buscar</button>
+      </div>
+      <!-- Show friends to add/remove to group. -->
+      <ion-list class="avatar-list" *ngIf="friends && friends.length > 0">
+        
+        <!-- <ion-searchbar [(ngModel)]="searchFriend" placeholder="Search for friend or username" showCancelButton="true" cancelButtonText="Done"></ion-searchbar> -->
+        <ion-item *ngFor="let friend of friends | friendFilter:searchFriend" no-lines tappable (click)="addOrRemoveFromGroup(friend)">
+          <ion-fab middle right>
+           
+           
+            <button  mini tappable (click)="addToGroup(friend); $event.stopPropagation();" *ngIf="!inGroup(friend)"></button>
+
+            <button ion-fab mini tappable (click)="removeFromGroup(friend); $event.stopPropagation();" *ngIf="inGroup(friend)"><ion-icon name="ios-close-circle" class="danger"></ion-icon></button>
+
+          </ion-fab>
+
+          <ion-avatar>
+  
+  
+              <img src="{{friend.img}}"> 
+
+          </ion-avatar>
+
+  
+          
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

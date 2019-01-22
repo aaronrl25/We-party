@@ -1,0 +1,38 @@
+page-messages {
+  ion-item span {
+    color: black;
+    font-size: 75%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 0.75em;
+    padding-top: 0.75em;
+  }
+  .button{
+    background: blue;
+    margin-top: 250px;
+    margin-left: 282px;
+  }
+
+ .imgP {
+    width: 28vw;
+    height: 28vw;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    margin-left: 500px;
+
+  }
+
+
+  ion-badge {
+    float: right;
+  }
+
+  div.bold {
+    h2 {
+      font-weight: bold !important;
+    }
+    font-weight: bold;
+  }
+}

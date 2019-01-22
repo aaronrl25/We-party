@@ -1,0 +1,70 @@
+ 
+
+<ion-content scroll="false">
+    <img src="assets/images/logo.png" style="width:30vh;height:30vh;"/>
+
+    <img src="assets/images/letra.png" />
+
+  <!-- Social Login Buttons -->
+  <div class="bottom">
+    <div class="buttons" *ngIf="mode == 'main'">
+      <div>
+          <form [formGroup]="emailPasswordForm">
+              <ion-list>
+                               <ion-input    type="email" formControlName="email" placeholder=" Email " ></ion-input>
+
+
+                  <ion-input type="password" formControlName="password" placeholder="Contraseña"></ion-input>
+             
+                </ion-list>
+            </form>
+            <button ion-button round tappable (click)="login()">Iniciar sesion</button>
+
+        <button ion-button round icon-left class="facebook" tappable (click)="loginProvider.facebookLogin()"><ion-icon name="logo-facebook"></ion-icon>Connect with Facebook</button>
+        <h6 tappable (click)="clearForms(); mode = 'forgotPassword'">Olvidaste tu contraseña?</h6> 
+
+
+        <h6 tappable (click)="clearForms(); mode = 'register'">Crear cuenta</h6>
+       
+        <div>
+      </div>
+      </div>
+    </div>
+      
+    <!-- Registration Form -->
+    <div class="form" *ngIf="mode == 'register'">
+      <button class="clear" ion-button icon-only tappable (click)="mode = 'main'"><ion-icon name="md-close"></ion-icon></button>
+      <form [formGroup]="emailPasswordForm">
+        <ion-list>
+          <ion-item no-lines>
+            
+            <ion-input type="email" formControlName="email" placeholder="Your Email Address"></ion-input>
+          </ion-item>
+          <ion-item no-lines>
+            
+            <ion-input type="password" formControlName="password" placeholder="Create Password"></ion-input>
+          </ion-item>
+        </ion-list>
+        <button ion-button icon-left class="dark" tappable (click)="register()" [disabled]="!emailPasswordForm.valid"><ion-icon name="md-log-in"></ion-icon>Join</button>
+      </form>
+      <p>By joining you agree to our <b>Terms</b> &amp; <b>Privacy Policy.</b></p>
+    </div>
+    <!-- Forgot Password Form -->
+    <div class="form" *ngIf="mode == 'forgotPassword'">
+      <button class="clear" ion-button icon-only tappable (click)="clearForms(); mode = 'login'"><ion-icon name="ios-close"></ion-icon></button>
+      <form [formGroup]="emailForm">
+        <ion-list>
+          <ion-item no-lines>
+            
+            <ion-input type="email" formControlName="email" placeholder="Your Email Address"></ion-input>
+          </ion-item>
+        </ion-list>
+        <button ion-button icon-left class="dark" tappable (click)="forgotPassword()" [disabled]="!emailForm.valid"><ion-icon name="md-unlock"></ion-icon>Reset Password</button>
+      </form>
+      <p tappable (click)="clearForms();">Back To <b>Log in</b></p>
+    </div>
+
+
+  </div>
+
+</ion-content>

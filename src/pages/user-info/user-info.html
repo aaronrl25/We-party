@@ -1,0 +1,75 @@
+     
+    <!-- No groups to show -->
+<ion-content>
+  <!-- User Info -->
+  <ion-item no-lines tappable (click)="back()">
+      <ion-icon name="ios-arrow-back" item-left></ion-icon>
+    </ion-item>  
+  <div *ngIf="user">
+
+    <div class="profile">
+
+      <img src="{{user.img}}" tappable (click)="enlargeImage(user.img)" />
+    </div>
+    <h4>
+      <span>{{user.name}} </span>
+      <ion-icon name="md-flame" *ngIf="user.provider == 'Firebase'" class="firebase"></ion-icon>
+      <ion-icon name="logo-facebook" *ngIf="user.provider == 'Facebook'" class="facebook"></ion-icon>
+      <ion-icon name="logo-google" *ngIf="user.provider == 'Google'" class="google"></ion-icon>
+    </h4>
+
+    <p class="description">{{user.description}}</p>
+    <div class="divider"></div>
+
+    <div class="center">
+        <div class="divider">
+          <p> 0 likes</p></div>
+
+      <!-- Show actions based on the status of the user in relation to the current logged in user. -->
+      <div *ngIf="friendRequests && friendRequests.indexOf(user.$key) > -1">
+        <p class="info">seguir.</p>
+
+        <button ion-button icon-only class="danger" tappable (click)="rejectFriendRequest()"><ion-icon name="md-close"></ion-icon></button>
+        <button ion-button icon-only class="success" tappable (click)="acceptFriendRequest()"><ion-icon name="md-checkmark"></ion-icon></button>
+      </div>
+
+      <div *ngIf="requestsSent && requestsSent.indexOf(user.$key) > -1">
+        <p class="info">Friend request sent.</p>
+        <button ion-button class="dark" tappable (click)="cancelFriendRequest()">unFollow</button>
+      </div> 
+      <div *ngIf="canAdd()">
+        <button ion-button class="primary" tappable (click)="sendFriendRequest()"> follow</button>
+      </div>
+      <div *ngIf="friends && friends.indexOf(user.$key) > -1">
+        <button ion-button class="primary" tappable (click)="sendMessage()">Send Message</button>
+
+      </div>
+     <div class="empty-list" *ngIf="groups && groups.length <= 0">
+         <p>Uh-oh! You are not party of any party yet.</p>
+       </div>
+       <!-- Show groups -->
+     
+       <div *ngIf="groups && groups.length > 0">
+         <div *ngFor="let group of groups | groupFilter: searchGroup">
+           <div (click)="viewGroup(group.$key)" tappable>
+             
+             <div [ngClass]=hasUnreadMessages(group)>
+                <img src="{{group.img}}" />
+
+               <ion-badge color="danger" *ngIf="group.unreadMessagesCount > 0">{{group.unreadMessagesCount}}</ion-badge>
+
+               <p>{{group.name}}</p>
+               <span>{{group.date | DateFormat}}</span>
+ 
+             </div>
+ 
+           </div>
+           
+ 
+         </div>
+       </div>
+
+    </div>
+  </div>
+ 
+</ion-content>

@@ -1,0 +1,174 @@
+page-group-info {
+   .scroll-content{
+        background-color :#2e2f40;
+
+    }
+    ion-button{
+      color:black;
+    }
+    span{
+      color:#fff;
+      font-size: 15px;
+    }
+    #map {
+      height: 20%;
+      width: 20%;
+      top: 0;
+      left: 0;
+      position: absolute!important;
+      overflow: hidden!important;
+  }
+  
+  .members {
+    text-align: center;
+
+    img {
+      width: 3.25em;
+      height: 3.25em;
+    }
+
+    img.activated,
+    img:active {
+      opacity: 0.5;
+    }
+  }
+  
+
+  ion-list {
+    margin-top: 1.125em !important;
+
+    ion-item {
+    }
+
+    ion-item.activated {
+      background: rgba(0, 0, 0, 0.5) !important;
+      color: $primary !important;
+    }
+
+    ion-item.activated ion-icon {
+      color: $primary;
+    }
+  }
+
+  .profile {
+    position: relative;
+    overflow: hidden;
+    height: 24vh;
+    margin-bottom: -0.625em;
+
+    img {
+      width: 28vw;
+      height: 28vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      object-fit: cover;
+    }
+
+    img.activated {
+      opacity: 0.5;
+    }
+  }
+
+  h4,
+  p {
+    text-align:left;
+    font-size: 20px;
+  }
+
+  h4 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+  }
+
+  p.username {
+    color: $primary;
+    margin-bottom: -6px !important;
+    margin-top: 6px !important;
+    font-size: 115%;
+  }
+
+  p.description {
+    width: 75vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  p {
+    color:white;
+  }
+
+  h4 span.activated,
+  p.activated {
+    opacity: 0.5;
+  }
+
+  .divider {
+    width: 100%;
+    border-bottom: solid 0.2em $primary;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+  }
+
+  ion-icon {
+    font-size: 1.4em;
+
+  }
+
+  ion-icon.facebook {
+  }
+
+  ion-icon.google {
+  }
+
+  ion-icon.firebase {
+  }
+
+  button {
+    border-radius: 0.75em !important;
+  }
+
+  button.danger {
+  }
+
+  button.danger.activated,
+  button.danger:active {
+  }
+
+  button.success {
+  }
+
+  button.success.activated,
+  button.success:active {
+  }
+
+  button.danger.activated,
+  button.danger:active,
+  button.success.activated,
+  button.success:active {
+    opacity: 0.5 !important;
+  }
+
+  button.primary {
+  }
+
+  button.primary.activated,
+  button.primary:active {
+  }
+
+  button.dark {
+  }
+
+  button.dark.activated,
+  button.dark:active {
+  }
+
+  p.info {
+    font-size: 110%;
+    color: #fff;
+  }
+}
